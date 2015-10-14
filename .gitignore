@@ -1,0 +1,7 @@
+/public/assets/
+.idea/*
+/vendor
+/node_modules
+/.env
+/_ide_helper.php
+/composer.lock
