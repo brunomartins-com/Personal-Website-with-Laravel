@@ -23,34 +23,31 @@
                         <li class="dropdown-header"><span>Settings</span></li>
 
                         <li>
-                            <a href="#">
+                            <a href="/profile" title="Profile">
                                 <i class="si si-user"></i>
                                 <span>&nbsp;Profile</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="si si-question"></i>
-                                <span>&nbsp;Help</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="si si-earphones-alt"></i>
-                                <span>&nbsp;Contact</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:developer@safetybeat.com">
-                                <i class="si si-envelope"></i>
-                                <span>&nbsp;Feedback</span>
+                            <a href="{{ route('websiteSettings') }}" title="Website Settings">
+                                <i class="si si-wrench"></i>
+                                <span>&nbsp;Website Settings</span>
                             </a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                            <a href="{{ route('logout') }}">
+                            <a href="../" target="_blank" title="Go To Website">
+                                <i class="si si-screen-desktop"></i>
+                                <span>&nbsp;Go To Website</span>
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="{{ route('logout') }}" title="Logout">
                                 <i class="si si-logout"></i>
                                 <span>&nbsp;Logout</span>
                             </a>

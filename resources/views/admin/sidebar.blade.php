@@ -19,15 +19,15 @@
             <!-- Side Content -->
             <div class="side-content">
                 <ul class="nav-main">
-                    <li class="nav-main-heading"><span class="sidebar-mini-hide">Config</span></li>
-
+                    <!--<li class="nav-main-heading"><span class="sidebar-mini-hide">Main</span></li>-->
+                    @foreach(Session::get('pagesAdmin') as $pageAdmin)
                     <li>
-                        <a href="{{ route('websiteSettings') }}">
-                            <i class="si si-wrench"></i>
-                            <span class="sidebar-mini-hide">Website Settings</span>
+                        <a href="{{ route($pageAdmin->pageAdminId) }}">
+                            <i class="{{ $pageAdmin->page->icon }}"></i>
+                            <span class="sidebar-mini-hide">{{ $pageAdmin->page->title }}</span>
                         </a>
                     </li>
-
+                    @endforeach
                 </ul>
             </div>
             <!-- END Side Content -->

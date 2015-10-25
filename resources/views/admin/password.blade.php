@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <div class="block block-themed animated fadeIn">
-                <div class="block-header bg-primary">
+                <div class="block-header bg-success">
                     <ul class="block-options">
                         <li>
                             <a href="{!! route('login') !!}"  title="Log In"><i class="si si-login"></i> Login</a>

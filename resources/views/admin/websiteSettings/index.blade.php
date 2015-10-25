@@ -28,7 +28,7 @@
     <div class="content">
         <!-- Dynamic Table Full -->
         <div class="block">
-            <div class="block-header bg-gray-lighter">
+            <div class="block-header bg-gray-darker text-white">
                 <ul class="block-options">
                     <li>
                         <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
@@ -161,13 +161,13 @@
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{{ $imagesSize['logotypeWidth'] }}px; max-height:{{ $imagesSize['logotypeHeight'] }}px; border: 0; padding: 0; border-radius: 0;"></div>
                                 <div class="font-size-10 push-10-t">Size: {{ $imagesSize['logotypeWidth']." x ".$imagesSize['logotypeHeight'] }} pixels</div>
                                 <div class="push-20-t">
-                                    <span class="btn btn-primary btn-xs btn-file">
+                                    <span class="btn btn-success btn-xs btn-file">
                                         <span class="fileupload-new">Change</span>
                                         <span class="fileupload-exists">Change</span>
                                         {!! Form::hidden('currentLogotype', $websiteSettings->logotype) !!}
                                         {!! Form::file('logotype', ['id'=>'logotype']) !!}
                                     </span>
-                                    <a href="#" class="btn btn-primary btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
+                                    <a href="#" class="btn btn-success btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -179,18 +179,18 @@
                             <div class="clearfix"></div>
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new" style="max-width:{{ $imagesSize['faviconWidth'] }}px; max-height:{{ $imagesSize['faviconHeight'] }};">
-                                    <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->favicon) !!}" alt="{{ $websiteSettings->title }}" />
+                                    <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->favicon)."?".time() !!}" alt="{{ $websiteSettings->title }}" />
                                 </div>
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{{ $imagesSize['faviconWidth'] }}px; max-height:{{ $imagesSize['faviconHeight'] }}; border: 0; padding: 0; border-radius: 0;"></div>
                                 <div class="font-size-10 push-10-t">Size: {{ $imagesSize['faviconWidth']." x ".$imagesSize['faviconHeight'] }} pixels / Format: .png or .gif</div>
                                 <div class="push-20-t">
-                                    <span class="btn btn-primary btn-xs btn-file">
+                                    <span class="btn btn-success btn-xs btn-file">
                                         <span class="fileupload-new">Change</span>
                                         <span class="fileupload-exists">Change</span>
                                         {!! Form::hidden('currentFavicon', $websiteSettings->favicon) !!}
                                         {!! Form::file('favicon', ['class'=>'form-control', 'id'=>'favicon', 'accept'=>'image/png,image/gif']) !!}
                                     </span>
-                                    <a href="#" class="btn btn-primary btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
+                                    <a href="#" class="btn btn-success btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -204,11 +204,11 @@
                                 <img />
                             </div>
                             <div class="img-current">
-                                <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->avatar) !!}" alt="{{ $websiteSettings->title }}" />
+                                <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->avatar)."?".time() !!}" alt="{{ $websiteSettings->title }}" />
                             </div>
                             <div class="font-size-10 push-10-t">Size: {{ $imagesSize['avatarWidth']." x ".$imagesSize['avatarHeight'] }} pixels</div>
                             <br>
-                            <label class="btn btn-primary btn-xs btn-upload" for="avatar" title="Upload image file">
+                            <label class="btn btn-success btn-xs btn-upload" for="avatar" title="Upload image file">
                                 {!! Form::hidden('currentAvatar', $websiteSettings->avatar) !!}
                                 {!! Form::hidden('avatarPositionX', '') !!}
                                 {!! Form::hidden('avatarPositionY', '') !!}
@@ -217,7 +217,7 @@
                                 {!! Form::file('avatar', ['class'=>'sr-only', 'id'=>'avatar', 'accept'=>'image/*', 'data-crop'=>true]) !!}
                                 <span class="docs-tooltip" title="Upload image file">Change</span>
                             </label>
-                            <label class="btn btn-primary btn-xs btn-cancel-upload hidden" title="Cancel">Cancel</label>
+                            <label class="btn btn-success btn-xs btn-cancel-upload hidden" title="Cancel">Cancel</label>
                         </div>
                     </div>
                     <br /><br />
@@ -227,18 +227,18 @@
                             <div class="clearfix"></div>
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new" style="max-width:{{ $imagesSize['appleTouchIconWidth'] }}px; max-height:{{ $imagesSize['appleTouchIconHeight'] }}px;">
-                                    <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->appleTouchIcon) !!}" alt="{{ $websiteSettings->title }}" />
+                                    <img src="{!! url('assets/images/_upload/websiteSettings/'.$websiteSettings->appleTouchIcon)."?".time() !!}" alt="{{ $websiteSettings->title }}" />
                                 </div>
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{{ $imagesSize['appleTouchIconWidth'] }}px; max-height:{{ $imagesSize['appleTouchIconHeight'] }}px; border-radius: 0; border:0; padding: 0;"></div>
                                 <div class="font-size-10 push-10-t">Size: {{ $imagesSize['appleTouchIconWidth']." x ".$imagesSize['appleTouchIconHeight'] }} pixels / Only .png</div>
                                 <div class="push-20-t">
-                                    <span class="btn btn-primary btn-xs btn-file">
+                                    <span class="btn btn-success btn-xs btn-file">
                                         <span class="fileupload-new">Change</span>
                                         <span class="fileupload-exists">Change</span>
                                         {!! Form::hidden('currentAppleTouchIcon', $websiteSettings->appleTouchIcon) !!}
                                         {!! Form::file('appleTouchIcon', ['id'=>'appleTouchIcon', 'accept'=>'image/png']) !!}
                                     </span>
-                                    <a href="#" class="btn btn-primary btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
+                                    <a href="#" class="btn btn-success btn-xs fileupload-exists" data-dismiss="fileupload" style="margin-left: 30px;">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                     <div class="form-group">
                         <div class="col-xs-12 push-30-t">
                             <!--if(App\ACL::hasPermission('permissionsCenterGroup', 'add'))-->
-                            {!! Form::submit('Save', ['class'=>'btn btn-primary pull-left']) !!}
+                            {!! Form::submit('Save', ['class'=>'btn btn-success pull-left']) !!}
                             <!--endif-->
                         </div>
                     </div>

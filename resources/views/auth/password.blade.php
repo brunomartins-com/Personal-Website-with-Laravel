@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <div class="block block-themed animated fadeIn">
-                <div class="block-header bg-primary">
+                <div class="block-header bg-success">
                     <ul class="block-options">
                         <li>
                             <a href="{!! route('login') !!}"  title="Log In"><i class="si si-login"></i> Login</a>
@@ -37,7 +37,7 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <div class="form-material form-material-primary">
+                                <div class="form-material form-material-success">
                                     <input class="form-control" type="text" placeholder="Enter your email" id="email" value="{{ old('email') }}" name="email">
                                     <label for="email">Email</label>
                                 </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-6 col-md-5">
-                                <button class="btn btn-block btn-primary" type="submit"><i class="si si-envelope-open pull-right"></i> Send Mail</button>
+                                <button class="btn btn-block btn-success" type="submit"><i class="si si-envelope-open pull-right"></i> Send Mail</button>
                             </div>
                         </div>
                     </form><!-- END Forgot Form -->
