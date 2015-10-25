@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\ACL;
 use App\Exceptions\Handler;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -39,6 +40,10 @@ class WebsiteSettingsController extends Controller
     }
     public function getIndex()
     {
+        if (! ACL::hasPermission('websiteSettings', 'edit')) {
+            return redirect(route('home'))->withErrors(['You don\'t have permission for edit the website settings.']);
+        }
+
         $imagesSize = [
             'logotypeWidth'         => $this->logotypeWidth,
             'logotypeHeight'        => $this->logotypeHeight,
@@ -58,9 +63,9 @@ class WebsiteSettingsController extends Controller
     public function putUpdate(Request $request, $folder = "assets/images/_upload/websiteSettings/")
     {
 
-        /*if (! ACL::hasPermission('permissionsCenter', 'access') && ! ACL::hasPermission('permissionsCenter', 'edit')) {
-            return redirect('/')->withErrors(['You don\'t have permission to do this action.']);
-        }*/
+        if (! ACL::hasPermission('websiteSettings', 'edit')) {
+            return redirect(route('home'))->withErrors(['You don\'t have permission for edit the website settings.']);
+        }
 
         $this->validate($request, [
             'title'         => 'required|max:50',

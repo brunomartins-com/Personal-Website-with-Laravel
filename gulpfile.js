@@ -55,5 +55,6 @@ elixir(function(mix) {
      'public/assets/admin/js/vendor.js');
 
  mix.scripts(['../../../resources/assets/admin/js/app.js'], 'public/assets/admin/js/app.js');
+ mix.scripts(['../../../resources/assets/admin/js/core/sortorder.js'], 'public/assets/admin/js/sortorder.js');
 
 });
