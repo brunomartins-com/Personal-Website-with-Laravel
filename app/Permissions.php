@@ -30,7 +30,7 @@ class Permissions extends Model
 
     public static function permissionByUserAndPage($userId, $pageId)
     {
-        return self::where('userId', $userId)->where('pageId', $pageId)->first();
+        return self::where('userId', $userId)->where('pageAdminId', $pageId)->first();
     }
 
     public static function deletePermissionByUser($userId)

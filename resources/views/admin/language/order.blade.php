@@ -1,6 +1,6 @@
 @extends('admin.sidebar-template')
 
-@section('title', 'Order About Me | ')
+@section('title', 'Order Languages | ')
 
 @section('page-content')
 @parent
@@ -11,12 +11,12 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    About Me <small></small>
+                    Languages <small></small>
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li><a href="{{ route('aboutMe') }}" class="text-success" title="About Me">About Me</a></li>
+                    <li><a href="{{ route('languages') }}" class="text-success" title="Languages">Languages</a></li>
                     <li>Update Order</li>
                 </ol>
             </div>
@@ -31,7 +31,7 @@
             <div class="block-header bg-gray-darker text-white">
                 <ul class="block-options">
                     <li>
-                        <button type="button" class="btn-back" data-url="{{ route('aboutMe') }}"><i class="si si-action-undo"></i></button>
+                        <button type="button" class="btn-back" data-url="{{ route('languages') }}"><i class="si si-action-undo"></i></button>
                     </li>
                     <li>
                         <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
@@ -48,36 +48,37 @@
 
                     <!-- For more info and examples you can check out https://jqueryui.com/sortable/ -->
                     <div class="row js-draggable-items">
-                        <div class="col-sm-12 draggable-column">
-                            {!! Form::open([
-                                'id' => 'formOrder',
-                                'class' => 'form-horizontal'
-                                ])
-                            !!}
-                            {!! Form::hidden('databaseTable', 'aboutMe') !!}
-                            {!! Form::hidden('primaryKey', 'aboutMeId') !!}
-                            {!! Form::hidden('sortorder', '') !!}
-                            @foreach($aboutMe as $text)
+                        {!! Form::open([
+                            'id' => 'formOrder',
+                            'class' => 'form-horizontal'
+                            ])
+                        !!}
+                        {!! Form::hidden('databaseTable', 'language') !!}
+                        {!! Form::hidden('primaryKey', 'languageId') !!}
+                        {!! Form::hidden('sortorder', '') !!}
+                        <div class="draggable-column col-xs-12 ui-sortable">
+                            @foreach($languages as $language)
                             <!-- Block -->
-                            <div class="block draggable-item" title="{{ $text->aboutMeId }}">
+                            <div class="block draggable-item" title="{{ $language->languageId }}">
                                 <div class="block-header">
                                     <ul class="block-options">
                                         <li>
                                             <span class="draggable-handler text-gray"><i class="si si-cursor-move"></i></span>
                                         </li>
                                     </ul>
-                                    <h3 class="block-title">{{ $text->title }}</h3>
+                                    <h3 class="block-title">{{ $language->languageName }}</h3>
                                 </div>
                             </div>
                             <!-- END Block -->
                             @endforeach
+                            <div class="clear clearfix"></div>
                             <div class="form-group">
                                 <div class="col-xs-12 push-30-t">
-                                    {!! Form::button('Done', ['class'=>'btn btn-success btn-back pull-left', 'data-url'=>route('aboutMe')]) !!}
+                                    {!! Form::button('Done', ['class'=>'btn btn-success btn-back pull-left', 'data-url'=>route('languages')]) !!}
                                 </div>
                             </div>
-                            {!! Form::close() !!}
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <!-- END Draggable Items with jQueryUI -->
@@ -96,9 +97,9 @@
 <script src="{{ asset('assets/admin/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/sortorder.js') }}"></script>
 <script>
-    $(function () {
-        // Init page helpers (jQueryUI)
-        App.initHelpers('draggable-items');
-    });
+$(function () {
+    // Init page helpers (jQueryUI)
+    App.initHelpers('draggable-items');
+});
 </script>
 @stop

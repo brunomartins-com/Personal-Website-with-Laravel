@@ -97,8 +97,9 @@
 <script src="{{ asset('assets/admin/editor/ckeditor/ckeditor.js') }}"></script>
 <script type="application/javascript">
 $(function(){
-    //INICIALIZA O EDITOR DE TEXTO
+    //START CKEDITOR CODE
     CKEDITOR.replace('text');
+    //START VALIDATE FORM CODE
     $('.form-horizontal').validate({
         errorClass: 'help-block text-right animated fadeInDown',
         errorElement: 'div',

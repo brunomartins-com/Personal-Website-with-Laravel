@@ -20,7 +20,7 @@ class PagesAdmin extends Model
         $noPermission = new Permissions();
 
         foreach ($pages as &$page) {
-            $permission = Permissions::permissionByUserAndPage($userId, $page->pageId);
+            $permission = Permissions::permissionByUserAndPage($userId, $page->pagesAdminId);
             $page->permission = (null == $permission)? $noPermission : $permission;
         }
         return $pages;

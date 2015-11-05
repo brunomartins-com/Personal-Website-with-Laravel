@@ -81,7 +81,7 @@
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-input">
                                 {!! Form::label('keywords', 'Keywords *') !!}
-                                {!! Form::textarea('keywords', $websiteSettings->keywords, ['class'=>'form-control', 'id'=>'keywords']) !!}
+                                {!! Form::textarea('keywords', $websiteSettings->keywords, ['class'=>'js-tags-input form-control', 'rows' => '6', 'id'=>'keywords']) !!}
                             </div>
                         </div>
                     </div>
@@ -264,8 +264,8 @@
 
 @section('javascript')
 @parent
+<script src="{{ asset('assets/admin/js/plugins/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
 <script type="application/javascript">
-$('#keywords').tagsInput();
 $(function(){
     $('.form-horizontal').validate({
         errorClass: 'help-block text-right animated fadeInDown',
@@ -374,6 +374,8 @@ $(function () {
     } else {
         $inputImage.prop('disabled', true).parent().addClass('disabled');
     }
+    // Init page helper (Tags Inputs plugin)
+    App.initHelpers(['tags-inputs']);
 });
 </script>
 @stop

@@ -1,6 +1,6 @@
 @extends('admin.sidebar-template')
 
-@section('title', 'Add About Me | ')
+@section('title', 'Profile | ')
 
 @section('page-content')
 @parent
@@ -11,13 +11,13 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    About Me <small></small>
+                    Profile <small></small>
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li><a href="{{ route('aboutMe') }}" class="text-success" title="About Me">About Me</a></li>
-                    <li>Add</li>
+                    <li>Profile</li>
+                    <li>Edit</li>
                 </ol>
             </div>
         </div>
@@ -31,15 +31,18 @@
             <div class="block-header bg-gray-darker text-white">
                 <ul class="block-options">
                     <li>
-                        <button type="button" class="btn-back" data-url="{{ route('aboutMe') }}"><i class="si si-action-undo"></i></button>
-                    </li>
-                    <li>
                         <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                     </li>
                 </ul>
-                <h3 class="block-title">Add</h3>
+                <h3 class="block-title">Edit</h3>
             </div>
             <div class="block-content">
+                @if (Session::has('success'))
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    {!! Session::get('success') !!}
+                </div>
+                @endif
                 @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -51,26 +54,43 @@
                 <!-- .block-content -->
                 <div class="block-content block-content-full">
                     {!! Form::open([
-                            'id' => 'aboutMe',
-                            'method' => 'post',
-                            'class' => 'form-horizontal push-20-t',
-                            'enctype' => 'multipart/form-data',
-                            'url' => route('aboutMeAdd')
-                            ])
+                        'id' => 'profile',
+                        'method' => 'put',
+                        'class' => 'form-horizontal push-20-t',
+                        'enctype' => 'multipart/form-data',
+                        'url' => route('profilePut')
+                        ])
                     !!}
+                    {!! Form::hidden('userId', $user->id) !!}
                     <div class="form-group">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="form-input">
-                                {!! Form::label('title', 'Title *') !!}
-                                {!! Form::text('title', '', ['class'=>'form-control', 'id'=>'title', 'maxlength'=>45]) !!}
+                                {!! Form::label('name', 'Name *') !!}
+                                {!! Form::text('name', $user->name, ['class'=>'form-control', 'id'=>'name', 'maxlength'=>50]) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="form-input">
-                                {!! Form::label('text', 'Text *') !!}
-                                {!! Form::textarea('text', '', ['class'=>'form-control', 'id'=>'text']) !!}
+                                {!! Form::label('email', 'Email *') !!}
+                                {!! Form::text('email', $user->email, ['class'=>'form-control', 'id'=>'email', 'maxlength'=>50]) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                            <div class="form-input">
+                                {!! Form::label('password', 'New Password') !!}
+                                <input name="password" id="password" type="password" class="form-control" maxlength="12" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                            <div class="form-input">
+                                {!! Form::label('password_confirmation', 'Confirm Password') !!}
+                                <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" maxlength="12" />
                             </div>
                         </div>
                     </div>
@@ -92,12 +112,8 @@
 
 @section('javascript')
 @parent
-<script src="{{ asset('assets/admin/editor/ckeditor/ckeditor.js') }}"></script>
-<script type="application/javascript">
+<script type="text/javascript">
 $(function(){
-    //START CKEDITOR
-    CKEDITOR.replace('text');
-    //START VALIDATE CODE FORM
     $('.form-horizontal').validate({
         errorClass: 'help-block text-right animated fadeInDown',
         errorElement: 'div',
@@ -114,22 +130,28 @@ $(function(){
         },
         ignore: [],
         rules: {
-            'title': {
+            'name': {
                 required: true
             },
-            'texto': {
-                required: function()
-                {
-                    CKEDITOR.instances.text.updateElement();
-                }
-            }
-        },
-        messages: {
-            'title': {
-                required: 'Please enter a title'
+            'email': {
+                required: true,
+                email: true
             },
-            'text': {
-                required: 'Please enter a text'
+            'password': {
+                minlength: 6,
+                maxlength: 12
+            },
+            'password_confirmation': {
+                required: function(element){
+                    if($("#password").val() != ''){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                },
+                minlength: 6,
+                maxlength: 12,
+                equalTo:"#password"
             }
         }
     });

@@ -1,6 +1,6 @@
 @extends('admin.sidebar-template')
 
-@section('title', 'Add About Me | ')
+@section('title', 'Edit About Me | ')
 
 @section('page-content')
 @parent
@@ -17,7 +17,8 @@
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
                     <li><a href="{{ route('aboutMe') }}" class="text-success" title="About Me">About Me</a></li>
-                    <li>Add</li>
+                    <li>{{ $aboutMe->title }}</li>
+                    <li>Edit</li>
                 </ol>
             </div>
         </div>
@@ -37,7 +38,7 @@
                         <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                     </li>
                 </ul>
-                <h3 class="block-title">Add</h3>
+                <h3 class="block-title">Edit</h3>
             </div>
             <div class="block-content">
                 @if (count($errors) > 0)
@@ -52,17 +53,18 @@
                 <div class="block-content block-content-full">
                     {!! Form::open([
                             'id' => 'aboutMe',
-                            'method' => 'post',
+                            'method' => 'put',
                             'class' => 'form-horizontal push-20-t',
                             'enctype' => 'multipart/form-data',
-                            'url' => route('aboutMeAdd')
+                            'url' => route('aboutMeEdit')
                             ])
                     !!}
+                    {!! Form::hidden('aboutMeId', $aboutMe->aboutMeId) !!}
                     <div class="form-group">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="form-input">
                                 {!! Form::label('title', 'Title *') !!}
-                                {!! Form::text('title', '', ['class'=>'form-control', 'id'=>'title', 'maxlength'=>45]) !!}
+                                {!! Form::text('title', $aboutMe->title, ['class'=>'form-control', 'id'=>'title', 'maxlength'=>45]) !!}
                             </div>
                         </div>
                     </div>
@@ -70,7 +72,7 @@
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-input">
                                 {!! Form::label('text', 'Text *') !!}
-                                {!! Form::textarea('text', '', ['class'=>'form-control', 'id'=>'text']) !!}
+                                {!! Form::textarea('text', $aboutMe->text, ['class'=>'form-control', 'id'=>'text']) !!}
                             </div>
                         </div>
                     </div>
@@ -95,9 +97,8 @@
 <script src="{{ asset('assets/admin/editor/ckeditor/ckeditor.js') }}"></script>
 <script type="application/javascript">
 $(function(){
-    //START CKEDITOR
+    //INICIALIZA O EDITOR DE TEXTO
     CKEDITOR.replace('text');
-    //START VALIDATE CODE FORM
     $('.form-horizontal').validate({
         errorClass: 'help-block text-right animated fadeInDown',
         errorElement: 'div',

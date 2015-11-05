@@ -1,6 +1,6 @@
 @extends('admin.sidebar-template')
 
-@section('title', 'Add About Me | ')
+@section('title', 'Add Skill | ')
 
 @section('page-content')
 @parent
@@ -11,12 +11,12 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    About Me <small></small>
+                    Skills <small></small>
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li><a href="{{ route('aboutMe') }}" class="text-success" title="About Me">About Me</a></li>
+                    <li><a href="{{ route('skills') }}" class="text-success" title="Skills">Skills</a></li>
                     <li>Add</li>
                 </ol>
             </div>
@@ -31,7 +31,7 @@
             <div class="block-header bg-gray-darker text-white">
                 <ul class="block-options">
                     <li>
-                        <button type="button" class="btn-back" data-url="{{ route('aboutMe') }}"><i class="si si-action-undo"></i></button>
+                        <button type="button" class="btn-back" data-url="{{ route('skills') }}"><i class="si si-action-undo"></i></button>
                     </li>
                     <li>
                         <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
@@ -44,33 +44,33 @@
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
+                    <p>{{ $error }}</p>
                     @endforeach
                 </div>
                 @endif
                 <!-- .block-content -->
                 <div class="block-content block-content-full">
                     {!! Form::open([
-                            'id' => 'aboutMe',
-                            'method' => 'post',
-                            'class' => 'form-horizontal push-20-t',
-                            'enctype' => 'multipart/form-data',
-                            'url' => route('aboutMeAdd')
-                            ])
+                        'id' => 'skills',
+                        'method' => 'post',
+                        'class' => 'form-horizontal push-20-t',
+                        'enctype' => 'multipart/form-data',
+                        'url' => route('skillsAdd')
+                        ])
                     !!}
                     <div class="form-group">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="form-input">
-                                {!! Form::label('title', 'Title *') !!}
-                                {!! Form::text('title', '', ['class'=>'form-control', 'id'=>'title', 'maxlength'=>45]) !!}
+                                {!! Form::label('name', 'Name *') !!}
+                                {!! Form::text('name', '', ['class'=>'form-control', 'id'=>'name', 'maxlength'=>45]) !!}
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                             <div class="form-input">
-                                {!! Form::label('text', 'Text *') !!}
-                                {!! Form::textarea('text', '', ['class'=>'form-control', 'id'=>'text']) !!}
+                                {!! Form::label('comment', 'Comment') !!}
+                                {!! Form::text('comment', '', ['class'=>'form-control', 'id'=>'comment', 'maxlength'=>45]) !!}
                             </div>
                         </div>
                     </div>
@@ -92,47 +92,30 @@
 
 @section('javascript')
 @parent
-<script src="{{ asset('assets/admin/editor/ckeditor/ckeditor.js') }}"></script>
 <script type="application/javascript">
-$(function(){
-    //START CKEDITOR
-    CKEDITOR.replace('text');
-    //START VALIDATE CODE FORM
-    $('.form-horizontal').validate({
-        errorClass: 'help-block text-right animated fadeInDown',
-        errorElement: 'div',
-        errorPlacement: function(error, e) {
-            jQuery(e).parents('.form-group .form-input').append(error);
-        },
-        highlight: function(e) {
-            jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
-            jQuery(e).closest('.help-block').remove();
-        },
-        success: function(e) {
-            jQuery(e).closest('.form-group').removeClass('has-error');
-            jQuery(e).closest('.help-block').remove();
-        },
-        ignore: [],
-        rules: {
-            'title': {
-                required: true
+    $(function(){
+        //START VALIDATE FORM CODE
+        $('.form-horizontal').validate({
+            errorClass: 'help-block text-right animated fadeInDown',
+            errorElement: 'div',
+            errorPlacement: function(error, e) {
+                jQuery(e).parents('.form-group .form-input').append(error);
             },
-            'texto': {
-                required: function()
-                {
-                    CKEDITOR.instances.text.updateElement();
+            highlight: function(e) {
+                jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            success: function(e) {
+                jQuery(e).closest('.form-group').removeClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            ignore: [],
+            rules: {
+                'name': {
+                    required: true
                 }
             }
-        },
-        messages: {
-            'title': {
-                required: 'Please enter a title'
-            },
-            'text': {
-                required: 'Please enter a text'
-            }
-        }
+        });
     });
-});
 </script>
 @stop
