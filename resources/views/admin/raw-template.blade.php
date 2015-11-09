@@ -23,7 +23,7 @@
                         <li class="dropdown-header"><span>Settings</span></li>
 
                         <li>
-                            <a href="/profile" title="Profile">
+                            <a href="{{ route('profile') }}" title="Profile">
                                 <i class="si si-user"></i>
                                 <span>&nbsp;Profile</span>
                             </a>

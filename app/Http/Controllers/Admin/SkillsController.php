@@ -45,11 +45,12 @@ class SkillsController extends Controller
         ]);
 
         $lastSkill = Skills::orderBy('sortorder', 'DESC')->addSelect('sortorder')->first();
+        $sortorder = isset($lastSkill) ? ($lastSkill->sortorder+1) : 1;
 
         $skills = new Skills();
         $skills->name       = $request->name;
         $skills->comment    = $request->comment;
-        $skills->sortorder  = $lastSkill->sortorder+1;
+        $skills->sortorder  = $sortorder;
 
         $skills->save();
 

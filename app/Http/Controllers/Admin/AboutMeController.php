@@ -45,11 +45,12 @@ class AboutMeController extends Controller
         ]);
 
         $lastAboutMe = AboutMe::orderBy('sortorder', 'DESC')->addSelect('sortorder')->first();
+        $sortorder = isset($lastAboutMe) ? ($lastAboutMe->sortorder+1) : 1;
 
         $aboutMe = new AboutMe();
         $aboutMe->title     = $request->title;
         $aboutMe->text      = $request->text;
-        $aboutMe->sortorder = $lastAboutMe->sortorder+1;
+        $aboutMe->sortorder = $sortorder;
 
         $aboutMe->save();
 

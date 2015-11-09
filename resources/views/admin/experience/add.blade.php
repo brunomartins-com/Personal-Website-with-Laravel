@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="form-input">
-                                {!! Form::label('dateEnd', 'Date End *') !!}
+                                {!! Form::label('dateEnd', 'Date End') !!}
                                 {!! Form::text('dateEnd', '', ['class'=>'js-datepicker js-masked-date form-control', 'data-date-format' => 'mm/dd/yyyy', 'placeholder' => 'mm/dd/yyyy',
                                                'id'=>'dateEnd', 'maxlength'=>10]) !!}
                             </div>
@@ -129,6 +129,7 @@
 $(function(){
     //START THE EDITOR
     CKEDITOR.replace('description');
+    //START VALIDATE FORM CODE
     $('.form-horizontal').validate({
         errorClass: 'help-block text-right animated fadeInDown',
         errorElement: 'div',
@@ -162,7 +163,6 @@ $(function(){
             }
         }
     });
-
     // Init page helpers (BS Datepicker + Masked Input)
     App.initHelpers(['datepicker', 'masked-inputs']);
 });

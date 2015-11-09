@@ -48,7 +48,7 @@ class LanguageController extends Controller
         }
 
         $imageDetails = [
-            'folder'        => $this->folder,
+            'folder'       => $this->folder,
             'flagWidth'    => $this->flagWidth,
             'flagHeight'   => $this->flagHeight
         ];
@@ -109,7 +109,7 @@ class LanguageController extends Controller
         }
 
         $imageDetails = [
-            'folder'        => $this->folder,
+            'folder'       => $this->folder,
             'flagWidth'    => $this->flagWidth,
             'flagHeight'   => $this->flagHeight
         ];

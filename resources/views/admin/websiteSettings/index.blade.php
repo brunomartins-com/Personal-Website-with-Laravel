@@ -312,6 +312,8 @@ $(function(){
             }
         }
     });
+    // Init page helper (Tags Inputs plugin)
+    App.initHelpers(['tags-inputs']);
 });
 $('.img-container > img').cropper({
     aspectRatio: <?=($imagesSize['avatarWidth'])/($imagesSize['avatarHeight']);?>,
@@ -374,8 +376,6 @@ $(function () {
     } else {
         $inputImage.prop('disabled', true).parent().addClass('disabled');
     }
-    // Init page helper (Tags Inputs plugin)
-    App.initHelpers(['tags-inputs']);
 });
 </script>
 @stop

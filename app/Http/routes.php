@@ -76,6 +76,31 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('languages/order', ['as' => 'languagesOrder', 'uses' => 'Admin\LanguageController@getOrder']);
     Route::delete('languages/delete', ['as' => 'languagesDelete', 'uses' => 'Admin\LanguageController@delete']);
 
+    ## PROJECTS
+    Route::get('projects', ['as' => 'projects', 'uses' => 'Admin\ProjectsController@getIndex']);
+    Route::get('projects/add', ['as' => 'projectsAdd', 'uses' => 'Admin\ProjectsController@getAdd']);
+    Route::post('projects/add', ['as' => 'projectsAdd', 'uses' => 'Admin\ProjectsController@postAdd']);
+    Route::get('projects/edit/{projectsId?}', ['as' => 'projectsEdit', 'uses' => 'Admin\ProjectsController@getEdit']);
+    Route::put('projects/edit', ['as' => 'projectsEditPut', 'uses' => 'Admin\ProjectsController@putEdit']);
+
+    Route::get('projects/gallery/{projectsId?}', ['as' => 'projectsGallery', 'uses' => 'Admin\ProjectsController@getGallery']);
+    Route::post('projects/gallery', ['as' => 'projectsGalleryAdd', 'uses' => 'Admin\ProjectsController@postGallery']);
+    Route::get('projects/{projectsId?}/gallery/edit/{projectsGalleryId?}', ['as' => 'projectsGalleryEdit', 'uses' => 'Admin\ProjectsController@getGalleryEdit']);
+    Route::put('projects/gallery/edit', ['as' => 'projectsGalleryEditPut', 'uses' => 'Admin\ProjectsController@putGalleryEdit']);
+    Route::get('projects/gallery/order/{projectsId?}', ['as' => 'projectsGalleryOrder', 'uses' => 'Admin\ProjectsController@getGalleryOrder']);
+    Route::delete('projects/gallery/delete', ['as' => 'projectsGalleryDelete', 'uses' => 'Admin\ProjectsController@deleteGallery']);
+
+    Route::get('projects/movie/{projectsId?}', ['as' => 'projectsMovie', 'uses' => 'Admin\ProjectsController@getMovie']);
+    Route::get('projects/movie/add/{projectsId?}', ['as' => 'projectsMovieAdd', 'uses' => 'Admin\ProjectsController@getMovieAdd']);
+    Route::post('projects/movie/add', ['as' => 'projectsMovieAddPost', 'uses' => 'Admin\ProjectsController@postMovieAdd']);
+    Route::get('projects/{projectsId}/movie/edit/{projectsMovieId?}', ['as' => 'projectsMovieEdit', 'uses' => 'Admin\ProjectsController@getMovieEdit']);
+    Route::put('projects/movie/edit', ['as' => 'projectsMovieEditPut', 'uses' => 'Admin\ProjectsController@putMovieEdit']);
+    Route::get('projects/movie/order/{projectsId?}', ['as' => 'projectsMovieOrder', 'uses' => 'Admin\ProjectsController@getMovieOrder']);
+    Route::delete('projects/movie/delete', ['as' => 'projectsMovieDelete', 'uses' => 'Admin\ProjectsController@deleteMovie']);
+
+    Route::get('projects/order', ['as' => 'projectsOrder', 'uses' => 'Admin\ProjectsController@getOrder']);
+    Route::delete('projects/delete', ['as' => 'projectsDelete', 'uses' => 'Admin\ProjectsController@delete']);
+
     ## WEBSITE SETTINGS
     Route::get('website-settings', ['as' => 'websiteSettings', 'uses' => 'Admin\WebsiteSettingsController@getIndex']);
     Route::put('website-settings', ['as' => 'websiteSettings', 'uses' => 'Admin\WebsiteSettingsController@putUpdate']);
@@ -99,5 +124,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     ##UPDATE ORDER
     Route::post('update-order', 'Admin\UpdateOrderController@postOrder');
+
+    ##CATEGORY
+    Route::get('select-category/{modalTitle?}/{modalName?}/{modalDatabaseTable?}', ['as' => 'selectCategory', 'uses' => 'Admin\CategoryModalController@getIndex']);
+    Route::post('select-category/add', ['as' => 'selectCategoryAdd', 'uses' => 'Admin\CategoryModalController@postAdd']);
+    Route::put('select-category/edit', ['as' => 'selectCategoryEdit', 'uses' => 'Admin\CategoryModalController@putEdit']);
+    Route::delete('select-category/delete', ['as' => 'selectCategoryDelete', 'uses' => 'Admin\CategoryModalController@delete']);
+    Route::post('select-category/refresh', ['as' => 'selectCategoryRefresh', 'uses' => 'Admin\CategoryModalController@postRefresh']);
 
 });
