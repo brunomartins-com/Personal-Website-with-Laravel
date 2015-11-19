@@ -74,6 +74,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                            <div class="form-input">
+                                {!! Form::label('image', 'Image') !!}
+                                <br />
+                                <img src="{{ asset('assets/images/_upload/projects/'.$project->projectsId.'/'.$projectGallery->image) }}" height="200" alt="{{ $projectGallery->label }}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-xs-12 push-30-t">
                             {!! Form::submit('Save', ['class'=>'btn btn-success pull-left']) !!}
                         </div>

@@ -135,8 +135,8 @@
                         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    {!! Form::label('instagram', 'Instagram') !!}
-                                    {!! Form::text('instagram', $websiteSettings->instagram, ['class'=>'form-control', 'id'=>'instagram', 'placeholder'=>'http://', 'maxlength'=>255]) !!}
+                                    {!! Form::label('github', 'GitHub') !!}
+                                    {!! Form::text('github', $websiteSettings->github, ['class'=>'form-control', 'id'=>'github', 'placeholder'=>'http://', 'maxlength'=>255]) !!}
                                 </div>
                             </div>
                         </div>

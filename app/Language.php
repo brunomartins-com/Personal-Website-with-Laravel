@@ -10,4 +10,23 @@ class Language extends Model {
 
     public $timestamps = false;
 
+    public function writeName()
+    {
+        return $this->hasOne('App\LanguageLevels', 'languageLevelsId', 'write');
+    }
+
+    public function readName()
+    {
+        return $this->hasOne('App\LanguageLevels', 'languageLevelsId', 'read');
+    }
+
+    public function speakName()
+    {
+        return $this->hasOne('App\LanguageLevels', 'languageLevelsId', 'speak');
+    }
+
+    public function listenName()
+    {
+        return $this->hasOne('App\LanguageLevels', 'languageLevelsId', 'listen');
+    }
 }

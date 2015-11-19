@@ -38,7 +38,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="../" target="_blank" title="Go To Website">
+                            <a href="/" target="_blank" title="Go To Website">
                                 <i class="si si-screen-desktop"></i>
                                 <span>&nbsp;Go To Website</span>
                             </a>

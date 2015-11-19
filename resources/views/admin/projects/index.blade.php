@@ -66,8 +66,9 @@
                     <thead>
                         <tr>
                             <th style="width: 50px;">Id</th>
-                            <th>Type</th>
+                            <th style="width: 100px;">Date</th>
                             <th>Title</th>
+                            <th>Type</th>
                             <th>Client</th>
                             <th class="text-center sorting-none" style="width: 130px;">Actions</th>
                         </tr>
@@ -76,8 +77,9 @@
                         @foreach($projects as $project)
                         <tr>
                             <td>{{ $project->sortorder }}</td>
-                            <td>{{ $project->type->projectsTypeName }}</td>
+                            <td>{{ $project->projectDate->format('M/Y') }}</td>
                             <td class="font-w600">{{ $project->title }}</td>
+                            <td>{{ $project->type->projectsTypeName }}</td>
                             <td>{{ $project->client }}</td>
                             <td class="text-center">
                                 {!! Form::button('<i class="fa fa-video-camera"></i>', ['title'=>'Movie', 'data-toggle'=>'tooltip', 'class'=>'btn btn-xs btn-info',
@@ -125,8 +127,8 @@
 jQuery(function(){
     jQuery('.js-dataTable-full').dataTable({
         columnDefs: [ { orderable: false, targets: 'sorting-none' } ],
-        pageLength: 10,
-        lengthMenu: [[10, 20, 50, 100], [10, 20, 50, 100]]
+        pageLength: 50,
+        lengthMenu: [[50, 100], [50, 100]]
     });
 });
 </script>

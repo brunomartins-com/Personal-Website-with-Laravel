@@ -1,37 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>Full stack web developer | Web design HTML CSS PHP MySQL Laravel Framework JavaScript</title>
+    <meta name="classification" content="Atlanta, Georgia, GA, Information and Technology: Computers and Internet: Web Design and Development">
+    <meta name="geography" content="United States, Georgia, Atlanta Metro">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="30 days">
+    <meta name="distribution" content="United States, USA, Georgia, Atlanta Metro, Atlanta">
+    <meta name="country" content="United States, USA">
+    <meta property="og:determiner" content="atlanta">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta name="robots" content="index,follow">
+    <meta name="location" content="Atlanta,Georgia">
+    <meta name="rating" content="General">
+    <meta name="google-site-verification" content="">
+    <meta name="description" content="Bruno Martins | Full Stack Web Developer Front-End &amp; Back-End Developer in Atlanta / GA - PHP, HTML5, CSS3, JAVASCRIPT, LARAVEL FRAMEWORK AND MORE">
+    <meta name="keywords" content="web design united states, web design georgia, web design atlanta, web design marietta, web design kennesaw, web design alpharetta, web programmer united states, web programmer georgia, web programmer atlanta, web programmer marietta, web programmer kenessaw, web programmer alpharetta, front-end developer, back-end developer, developer, php developer, php programmer, html programmer, css programmer, full stack, professional">
+    <meta charset="utf-8">
+    <meta name="author" content="Bruno Martins">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="ICBM" content="GA ">
+    <meta name="geo.position" content="GA ">
+    <meta name="geo.placename" content="Atlanta">
+    <meta name="geo.region" content="us">
+    <meta property="dc.title" lang="en" content="Full stack web developer | Web design HTML CSS PHP MySQL Laravel Framework JavaScript">
+    <meta property="dc.description" lang="en" content="Bruno Martins | Full Stack Web Developer Front-End &amp; Back-End Developer in Atlanta / GA - PHP, HTML5, CSS3, JAVASCRIPT, LARAVEL FRAMEWORK AND MORE">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bruno Martins">
+    <meta property="og:url" content="{{ url() }}">
+    <meta property="og:title" content="Full stack web developer | Web design HTML CSS PHP MySQL Laravel Framework JavaScript">
+    <meta property="og:description" content="Bruno Martins | Full Stack Web Developer Front-End &amp; Back-End Developer in Atlanta / GA - PHP, HTML5, CSS3, JAVASCRIPT, LARAVEL FRAMEWORK AND MORE">
+    <meta property="og:image" content="{{ asset('assets/images/_upload/websiteSettings/'.$websiteSettings['avatar']) }}">
+    <meta property="facebook:card" content="summary">
+    <meta property="facebook:url" content="{{ url() }}">
+    <meta property="facebook:title" content="Atlanta Web Design">
+    <meta property="facebook:description" content="Bruno Martins | Full Stack Web Developer Front-End &amp; Back-End Developer in Atlanta / GA - PHP, HTML5, CSS3, JAVASCRIPT, LARAVEL FRAMEWORK AND MORE">
+    <meta property="facebook:image" content="{{ asset('assets/images/_upload/websiteSettings/'.$websiteSettings['avatar']) }}">
+    <meta property="facebook:site" content="{{ url() }}">
+    <meta property="fb:card" content="summary">
+    <meta property="fb:url" content="{{ url() }}">
+    <meta property="fb:title" content="Atlanta Web Design">
+    <meta property="fb:description" content="Bruno Martins | Full Stack Web Developer Front-End &amp; Back-End Developer in Atlanta / GA - PHP, HTML5, CSS3, JAVASCRIPT, LARAVEL FRAMEWORK AND MORE">
+    <meta property="fb:image" content="{{ asset('assets/images/_upload/websiteSettings/'.$websiteSettings['avatar']) }}">
+    <meta property="fb:site" content="{{ url() }}">
+    <base href="{{ url() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0; user-scalable=0;">
     <meta name="format-detection" content="telephone=no" />
-    <meta name="author" content="Bruno Martins">
-    <title>{{ $websiteSettings['title'] }}</title>
-    <link href="{!! url('assets/ico/favicon.png') !!}" rel="shortcut icon" />
-    <link href="{!! url('assets/css/main.css') !!}" rel="stylesheet" type="text/css" />
-    <script src="{!! url('assets/js/jquery.js') !!}"></script>
+    <meta name="publisher" content="Atlanta Web Design">
+    <link rel="shortcut icon" href="{{ asset('assets/images/_upload/websiteSettings/'.$websiteSettings['favicon']) }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/_upload/websiteSettings/'.$websiteSettings['appleTouchIcon']) }}">
 </head>
 <body>
+<!-- MODAL -->
+<div id="AboutMeModal" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+    </div>
+</div>
+<div id="ContactModal" class="modal fade bs-example-modal-md">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content"></div>
+    </div>
+</div>
 <div class="right-bar"></div>
 <div class="row-fluid main">
     <header class="header">
         <h1 class="col-lg-6 col-md-4 col-sm-5 col-xs-10 logo">{{ $websiteSettings['title'] }}</h1>
         <div class="col-lg-3 col-md-4 col-sm-3 col-xs-2">
             <ul class="social-network">
-                @if(!empty($websiteSettings['instagram']))
-                <li>
-                    <a href="{{ $websiteSettings['instagram'] }}" target="_blank" class="instagram" title="Instagram" data-placement="top"></a>
+                @if(!empty($websiteSettings['github']))
+                <li class="hidden-md hidden-xs">
+                    <a href="{{ $websiteSettings['github'] }}" target="_blank" class="github" title="GitHub" data-placement="top"></a>
                 </li>
                 @endif
                 @if(!empty($websiteSettings['linkedin']))
-                <li>
+                <li class="hidden-md hidden-xs">
                     <a href="{{ $websiteSettings['linkedin'] }}" target="_blank" class="linkedin" title="LinkedIn" data-placement="top"></a>
                 </li>
                 @endif
                 <li>
-                    <a href="{!! route('about-me') !!}" class="aboutme clickmodal" title="About Me" data-placement="top" data-toggle="modal" data-target="#modal"></a>
+                    <a href="{!! route('about-me') !!}" data-remote="{!! route('about-me-modal') !!}" class="aboutme clickmodal" title="About Me" data-placement="top" data-toggle="modal" data-target="#AboutMeModal"></a>
                 </li>
                 <li>
-                    <a href="{!! route('contact') !!}" class="contact" title="Contact" data-placement="top" data-toggle="modal" data-target="#modal"></a>
+                    <a href="{!! route('contact') !!}" data-remote="{!! route('contact-modal') !!}" class="contact clickmodal" title="Contact" data-placement="top" data-toggle="modal" data-target="#ContactModal"></a>
                 </li>
             </ul>
         </div>
@@ -44,88 +97,22 @@
     <div class="clearfix"><br><br></div>
     <div class="content">
         <h3 class="font-size-24 gray text-uppercase">Latest Projects</h3>
-        <div class="col-lg-3 col-md-3 col-sm-7 col-xs-7 latest-projects">
-            <a href="job1.html">
+        @foreach($projects as $project)
+        <div class="{{ $project->bootstrapColumn }} latest-projects" data-sort="{{ $project->sortorder }}">
+            <a href="{{ route('projectIndex', [$project->projectDate->format('m'), $project->projectDate->format('Y'), $project->slug]) }}" data-href="{{ route('project', [$project->projectsId, $project->slug]) }}"
+               title="{{ $project->title }}">
                 <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job1.jpg" alt="Adidas" />
+                <img src="{{ url('assets/images/_upload/projects/'.$project->projectsId.'/'.$project->imagePrefixName.$project->image) }}" alt="{{ $project->title }}" />
                 <span class="title-project">
-                    <strong>Adidas</strong>
-                    <em>Web Design</em>
+                    <strong>{{ $project->title }}</strong>
+                    <em>{{ $project->type->projectsTypeName }}</em>
                 </span>
             </a>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 latest-projects">
-            <a href="job2.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job2.jpg" alt="Speedo" />
-                <span class="title-project">
-                    <strong>Speedo</strong>
-                    <em>Graphic Design</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 latest-projects">
-            <a href="job3.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job3.jpg" alt="The 80's" />
-                <span class="title-project">
-                    <strong>The 80's</strong>
-                    <em>Graphic Design</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-7 col-xs-7 latest-projects">
-            <a href="job4.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job4.jpg" alt="Montain Bike" />
-                <span class="title-project">
-                    <strong>Montain Bike</strong>
-                    <em>Website</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 latest-projects">
-            <a href="job4.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job5.jpg" alt="Coca-Cola" />
-                <span class="title-project">
-                    <strong>Coca Cola</strong>
-                    <em>Hotsite</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-2 col-sm-3 col-xs-6 latest-projects">
-            <a href="job4.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job6.jpg" alt="Roogle Red" />
-                <span class="title-project">
-                    <strong>Roogle Red</strong>
-                    <em>Website</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-3 col-xs-7 latest-projects">
-            <a href="job4.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job7.jpg" alt="Burger King" />
-                <span class="title-project">
-                    <strong>Brazil Flag</strong>
-                    <em>Illustrator</em>
-                </span>
-            </a>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 latest-projects">
-            <a href="job4.html">
-                <span class="animate-arrows"></span>
-                <img src="assets/images/_upload/job8.jpg" alt="Burger King" />
-                <span class="title-project">
-                    <strong>Burger King</strong>
-                    <em>Animation Graphic</em>
-                </span>
-            </a>
-        </div>
+        @endforeach
     </div><!-- END .content -->
 </div><!-- END .row-fluid .main -->
+<!--<div id="loader"></div>-->
 <footer class="footer">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         @if(!empty($websiteSettings['phone']))
@@ -135,21 +122,22 @@
         Email: {{ $websiteSettings['email'] }}
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-        &copy; {{ date('Y') }} {{ $websiteSettings['title'] }}
+        &copy; {{ date('Y') }} Bruno Martins - Full Stack Web Developer
     </div>
 </footer>
-<!-- START MODAL -->
-<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content"></div>
-    </div>
-</div>
-<script src="{!! url('assets/js/main.js') !!}"></script>
+<link href="{!! url('assets/css/main.css') !!}" rel="stylesheet" type="text/css" />
+<script src="{!! url('assets/js/jquery.js') !!}"></script>
+<script src="{!! url('assets/js/bootstrap.js') !!}"></script>
+<script src="{!! url('assets/js/custom.js') !!}"></script>
+@if(!empty($buttonClick))
 <script>
-if(!('ontouchstart' in window)) {
-    $('.social-network a').tooltip();
-}
-$(".latest-projects a").pageslide({ direction: "left" });
+$('a[href="<?=$buttonClick;?>"]').trigger('click');
 </script>
+@endif
+@if(Session::has('message'))
+<script>
+    alert('{!! Session::get('message') !!}');
+</script>
+@endif
 </body>
 </html>

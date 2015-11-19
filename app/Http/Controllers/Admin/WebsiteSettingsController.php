@@ -83,7 +83,7 @@ class WebsiteSettingsController extends Controller
         $websiteSettings->city          = $request->city;
         $websiteSettings->state         = $request->state;
         $websiteSettings->country       = $request->country;
-        $websiteSettings->instagram     = $request->instagram;
+        $websiteSettings->github        = $request->github;
         $websiteSettings->linkedin      = $request->linkedin;
 
         if ($request->logotype) {

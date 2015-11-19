@@ -25,11 +25,11 @@ class ProjectsController extends Controller
 
     public function __construct(){
         $this->folder       = "assets/images/_upload/projects/";
-        $this->largeWidth   = 760;
+        $this->largeWidth   = 750;
         $this->largeHeight  = 480;
-        $this->mediumWidth  = 570;
+        $this->mediumWidth  = 450;
         $this->mediumHeight = 480;
-        $this->smallWidth   = 380;
+        $this->smallWidth   = 300;
         $this->smallHeight  = 480;
     }
 
@@ -79,7 +79,8 @@ class ProjectsController extends Controller
             'projectsTypeId'=> 'required',
             'projectDate'   => 'required|date_format:m/d/Y',
             'client'        => 'required|max:50',
-            'agency'        => 'required|max:50',
+            'agency'        => 'max:50',
+            'url'           => 'max:255',
             'description'   => 'required',
             'tags'          => 'required',
             'largeImage'    => 'required',
@@ -93,9 +94,10 @@ class ProjectsController extends Controller
         $project = new Projects();
         $project->title         = $request->title;
         $project->projectsTypeId= $request->projectsTypeId;
-        $project->projectDate   = Carbon::createFromFormat('m/d/Y', $request->projectDate)->format('Y-m-d');
+        $project->projectDate   = Carbon::createFromFormat('m/d/Y', $request->projectDate)->format('Y-m-d H:i:s');
         $project->client        = $request->client;
         $project->agency        = $request->agency;
+        $project->url           = $request->url;
         $project->description   = $request->description;
         $project->tags          = $request->tags;
         $project->sortorder     = $sortorder;
@@ -174,7 +176,8 @@ class ProjectsController extends Controller
             'projectsTypeId'=> 'required',
             'projectDate'   => 'required|date_format:m/d/Y',
             'client'        => 'required|max:50',
-            'agency'        => 'required|max:50',
+            'agency'        => 'max:50',
+            'url'           => 'max:255',
             'description'   => 'required',
             'tags'          => 'required'
         ]);
@@ -182,9 +185,10 @@ class ProjectsController extends Controller
         $project = Projects::find($request->projectsId);
         $project->title         = $request->title;
         $project->projectsTypeId= $request->projectsTypeId;
-        $project->projectDate   = Carbon::createFromFormat('m/d/Y', $request->projectDate)->format('Y-m-d');
+        $project->projectDate   = Carbon::createFromFormat('m/d/Y', $request->projectDate)->format('Y-m-d H:i:s');
         $project->client        = $request->client;
         $project->agency        = $request->agency;
+        $project->url           = $request->url;
         $project->description   = $request->description;
         $project->tags          = $request->tags;
         //LARGE IMAGE
@@ -497,6 +501,7 @@ class ProjectsController extends Controller
         $projects = Projects::orderBy('sortorder', 'ASC')
             ->addSelect('projectsId')
             ->addSelect('title')
+            ->addSelect('projectDate')
             ->addSelect('sortorder')
             ->get();
 

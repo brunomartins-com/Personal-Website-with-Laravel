@@ -2,19 +2,27 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+use App\AboutMe;
+use App\Experience;
+use App\Skills;
+use App\Language;
+use App\LanguageLevels;
 
 class AboutMeController extends Controller
 {
     public function index()
     {
-        /*
-        $sites = $this->site->where('s.entityId', '=', $entityId)
-            ->addSelect('s.siteId')
-            ->addSelect('s.name')
-            ->orderBy('s.name', 'asc')
-            ->get(); */
+        $websiteSettings = \App\Exceptions\Handler::readFile("websiteSettings.json");
 
-        return view('website.aboutme');
+        $aboutMe = AboutMe::orderBy('sortorder', 'asc')->get();
+        $experiences = Experience::orderBy('dateStart', 'desc')->get();
+        $skills = Skills::orderBy('sortorder', 'asc')->get();
+        $languages = Language::orderBy('sortorder', 'asc')->get();
+        //foreach($languages as $language):
+        //dd($language->writeName);
+        //endforeach;
+
+        return view('website.aboutme')->with(compact('websiteSettings', 'aboutMe', 'experiences', 'skills', 'languages'));
     }
 }

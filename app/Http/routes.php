@@ -15,11 +15,18 @@
 Route::get('/', ['as'=>'index', 'uses'=>'Website\IndexController@index']);
 
 ## ABOUT ME
-Route::get('about-me', ['as'=>'about-me', 'uses'=>'Website\AboutMeController@index']);
+Route::get('about-me', ['as'=>'about-me', 'uses'=>'Website\IndexController@index']);
+Route::get('about-me-modal', ['as'=>'about-me-modal', 'uses'=>'Website\AboutMeController@index']);
 
 ## CONTACT
-Route::get('contact', ['as'=>'contact', 'uses'=>'Website\ContactController@index']);
+Route::get('contact', ['as'=>'contact', 'uses'=>'Website\IndexController@index']);
+Route::get('contact-modal', ['as'=>'contact-modal', 'uses'=>'Website\ContactController@index']);
+Route::post('contact', ['as'=>'contact', 'uses'=>'Website\ContactController@post']);
 
+## PROJECTS
+Route::get('project/{month}/{year}/{slug}', ['as'=>'projectIndex', 'uses'=>'Website\IndexController@index'])->where(['month' => '[0-9]+', 'year' => '[0-9]+']);
+Route::get('project/{projectsId}/{slug}', ['as'=>'project', 'uses'=>'Website\ProjectsController@project'])->where(['projectsId' => '[0-9]+']);
+//Route::post('projects/pagination', ['as'=>'projectsPagination', 'uses'=>'Website\ProjectsController@pagination']);
 
 // AUTHENTICATION
 Route::get('admin', function () {

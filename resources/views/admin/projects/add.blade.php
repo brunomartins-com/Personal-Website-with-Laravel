@@ -107,6 +107,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                            <div class="form-input">
+                                {!! Form::label('url', 'URL') !!}
+                                {!! Form::text('url', '', ['class'=>'form-control', 'id'=>'url', 'placeholder'=>'Without http://', 'maxlength'=>255]) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-input">
                                 {!! Form::label('description', 'Description *') !!}

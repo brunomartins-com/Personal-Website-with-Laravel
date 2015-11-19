@@ -6,7 +6,7 @@
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <!-- Login Block -->
             <div class="block block-themed animated fadeIn">
-                <div class="block-header bg-success">
+                <div class="block-header bg-gray-darker">
                     <ul class="block-options">
                         <li>
                             <a href="{!! route('passwordEmail') !!}" title="Recover Password"><i class="si si-wrench"></i> Forgot Password?</a>

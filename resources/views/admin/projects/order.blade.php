@@ -66,7 +66,7 @@
                                             <span class="draggable-handler text-gray"><i class="si si-cursor-move"></i></span>
                                         </li>
                                     </ul>
-                                    <h3 class="block-title">{{ $project->title }}</h3>
+                                    <h3 class="block-title">{{ $project->projectDate->format('M/Y')." | ".$project->title }}</h3>
                                 </div>
                             </div>
                             <!-- END Block -->
