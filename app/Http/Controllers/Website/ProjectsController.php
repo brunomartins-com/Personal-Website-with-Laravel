@@ -12,6 +12,7 @@ class ProjectsController extends Controller
 {
     public function project(Request $request)
     {
+        sleep(10);
         $project = Projects::where('projectsId', '=', $request->projectsId)->first();
         array_add($project, 'slug', Handler::createSlug($project->title, '-'));
 

@@ -16,9 +16,9 @@ elixir(function(mix) {
  // WEBSITE
  //mix.copy( "resources/assets/images/**", "public/assets/images/");
  mix.sass(['main.scss'], 'public/assets/css/main.css');
- mix.scripts(['bootstrap.js'], 'public/assets/js/bootstrap.js');
+ //mix.scripts(['bootstrap.js'], 'public/assets/js/bootstrap.js');
  mix.scripts(['jquery.validate.min.js','validateContact.js'], 'public/assets/js/validateContact.js');
- mix.scripts(['pageslide.js', 'custom.js'], 'public/assets/js/custom.js');
+ mix.scripts(['jquery.min.js', 'bootstrap.js', 'pageslide.js', 'custom.js'], 'public/assets/js/main.js');
 
  // ADMIN
  mix.styles([
