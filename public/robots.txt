@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Allow: /
+Allow: /about-me
+Allow: /contact
+sitemap: http://www.brunomartins.com/sitemap.xml

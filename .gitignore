@@ -1,9 +1,8 @@
-/resources/assets/
-/public/assets/
+/resources/assets/*
+/public/assets/*
 .idea/*
 /vendor
 /node_modules
-/.env
-/_ide_helper.php
-/resources/assets/sass/custom.scss
-/composer.lock
+.env
+_ide_helper.php
+composer.lock

@@ -14,6 +14,7 @@ class IndexController extends Controller
         if($request->getRequestUri() != '/'){
             $buttonClick = $request->getUri();
         }
+
         //WEBSITE SETTINGS
         $websiteSettings = Handler::readFile("websiteSettings.json");
 
