@@ -53,7 +53,7 @@ class ExperienceController extends Controller
         $experience = new Experience();
         $experience->dateStart      = Carbon::createFromFormat('m/d/Y', $request->dateStart)->format('Y-m-d');
         if(!empty($request->dateEnd)) {
-            $experience->dateEnd = Carbon::createFromFormat('m/d/Y', $request->dateEnd)->format('Y-m-d');
+            $experience->dateEnd    = Carbon::createFromFormat('m/d/Y', $request->dateEnd)->format('Y-m-d');
         }
         $experience->position       = $request->position;
         $experience->company        = $request->company;
@@ -83,13 +83,18 @@ class ExperienceController extends Controller
         }
 
         $this->validate($request, [
-            'title'         => 'required|max:45',
-            'text'          => 'required'
+            'dateStart'     => 'required|date_format:m/d/Y',
+            'dateEnd'       => 'date_format:m/d/Y',
+            'position'      => 'required|max:50',
+            'company'       => 'required|max:50',
+            'description'   => 'required'
         ]);
 
         $experience = Experience::find($request->experienceId);
-        $experience->dateStart      = $request->dateStart->format('Y-m-d');
-        $experience->dateEnd        = $request->dateEnd->format('Y-m-d');
+        $experience->dateStart      = Carbon::createFromFormat('m/d/Y', $request->dateStart)->format('Y-m-d');
+        if(!empty($request->dateEnd)) {
+            $experience->dateEnd    = Carbon::createFromFormat('m/d/Y', $request->dateEnd)->format('Y-m-d');
+        }
         $experience->position       = $request->position;
         $experience->company        = $request->company;
         $experience->description    = $request->description;

@@ -1,5 +1,5 @@
-/resources/assets/*
-/public/assets/*
+/resources/assets/admin
+/public/assets
 .idea/*
 /vendor
 /node_modules

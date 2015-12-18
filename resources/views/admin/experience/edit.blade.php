@@ -63,6 +63,7 @@
                         'url' => route('experienceEditPut')
                         ])
                     !!}
+                    {!! Form::hidden('experienceId', $experience->experienceId) !!}
                     <div class="form-group">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="form-input">
@@ -76,8 +77,13 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="form-input">
                                 {!! Form::label('dateEnd', 'Date End') !!}
+                                @if(!empty($experience->dateEnd))
                                 {!! Form::text('dateEnd', $experience->dateEnd->format('m/d/Y'), ['class'=>'js-datepicker js-masked-date form-control', 'data-date-format' => 'mm/dd/yyyy', 'placeholder' => 'mm/dd/yyyy',
                                                'id'=>'dateEnd', 'maxlength'=>10]) !!}
+                                @else
+                                {!! Form::text('dateEnd', '', ['class'=>'js-datepicker js-masked-date form-control', 'data-date-format' => 'mm/dd/yyyy', 'placeholder' => 'mm/dd/yyyy',
+                                               'id'=>'dateEnd', 'maxlength'=>10]) !!}
+                                @endif
                             </div>
                         </div>
                     </div>
